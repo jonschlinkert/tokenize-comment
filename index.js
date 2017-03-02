@@ -114,8 +114,7 @@ function parseExamples(str, options) {
       var match = /^@description\s*([\s\S]+)/.exec(tag);
       if (match) {
         tok.tags.splice(i, 1);
-        // parseLines(match[1].split('\n'));
-        tok.description = match[1];
+        parseLines(match[1].split('\n'));
       }
     }
   }

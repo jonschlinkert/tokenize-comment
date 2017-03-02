@@ -138,7 +138,7 @@ describe('gfm', function() {
     });
   });
 
-  it.only('should work when no stars prefix the gfm example', function () {
+  it.skip('should work when no stars prefix the gfm example', function () {
     var tok = tokenize(fixtures['examples-gfm-no-stars']);
 
     // assert.deepEqual(tok, {
