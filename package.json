@@ -1,0 +1,34 @@
+{
+  "name": "tokenize-comment",
+  "description": "Tokenize a single JavaScript code comment into sections that can be parsed. ",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jonschlinkert/tokenize-comment",
+  "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "repository": "jonschlinkert/tokenize-comment",
+  "bugs": {
+    "url": "https://github.com/jonschlinkert/tokenize-comment/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "comment",
+    "generategenerator",
+    "tokenize"
+  ],
+  "dependencies": {
+    "extend-shallow": "^2.0.1"
+  },
+  "devDependencies": {
+    "extract-comments": "^0.10.1",
+    "mocha": "^3.2.0"
+  }
+}
