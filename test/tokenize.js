@@ -30,8 +30,18 @@ describe('tokenize', function() {
       description: 'foo bar baz',
       examples: [],
       tags: [
-        '@param {string} something',
-        '@param {string} else'
+        {
+          key: 'param',
+          raw: '@param {string} something',
+          type: 'tag',
+          val: '{string} something'
+        },
+        {
+          key: 'param',
+          raw: '@param {string} else',
+          type: 'tag',
+          val: '{string} else'
+        }
       ]
     });
   });

@@ -25,7 +25,8 @@
     "tokenize"
   ],
   "dependencies": {
-    "extend-shallow": "^2.0.1"
+    "extend-shallow": "^2.0.1",
+    "snapdragon": "^0.10.1"
   },
   "devDependencies": {
     "extract-comments": "^0.10.1",

@@ -9,7 +9,7 @@ var tokenize = require('..');
 var fixtures = support.files(__dirname, 'fixtures');
 
 describe('examples', function() {
-  it('should tokenize gfm, indented or javadoc examples', function() {
+  it.only('should tokenize gfm, indented or javadoc examples', function() {
     var tok = tokenize(fixtures['examples-multiple']);
 
     assert.deepEqual(tok, {
@@ -60,9 +60,24 @@ describe('examples', function() {
       ],
       footer: 'This is some random closing text.',
       tags: [
-        '@param {String} foo bar',
-        '@returns {Object} Instance of Foo',
-        '@api public'
+        {
+          type: 'tag',
+          raw: '@param {String} foo bar',
+          key: 'param',
+          val: '{String} foo bar'
+        },
+        {
+          type: 'tag',
+          raw: '@returns {Object} Instance of Foo',
+          key: 'returns',
+          val: '{Object} Instance of Foo'
+        },
+        {
+          type: 'tag',
+          raw: '@api public',
+          key: 'api',
+          val: 'public'
+        }
       ]
     });
   });
