@@ -9,56 +9,73 @@ var tokenize = require('..');
 var fixtures = support.files(__dirname, 'fixtures');
 
 describe('examples', function() {
-  it.only('should tokenize gfm, indented or javadoc examples', function() {
+  // it.only('should tokenize gfm, indented or javadoc examples', function() {
+  //   var comments = extract(fixtures.angular).filter(function(comment) {
+  //     return comment.type === 'block' && comment.raw.charAt(0) === '*';
+  //   }).slice(1);
+
+  //   console.log(comments.slice(0, 5))
+  //   // var tok = tokenize(comment);
+
+  // });
+
+  it.only('should tokenize gfm, indented or javadoc examples', function () {
     var tok = tokenize(fixtures['examples-multiple']);
 
     assert.deepEqual(tok, {
       description: 'This is a comment with\nseveral lines of text.',
+      footer: 'This is some random closing text.',
       examples: [
         {
           type: 'gfm',
+          val: '```js\nvar foo = bar;\nvar foo = bar;\nvar foo = bar;\n```',
+          description: 'An example',
           language: 'js',
-          description: 'An example\n',
-          code: '\nvar foo = bar;\nvar foo = bar;\nvar foo = bar;'
+          code: '\nvar foo = bar;\nvar foo = bar;\nvar foo = bar;\n'
         },
         {
           type: 'indented',
+          val: '    var baz = fez;\n    var baz = fez;\n    var baz = fez;\n',
+          description: 'Another example',
           language: '',
-          description: '\nAnother example\n',
-          code: '\nvar baz = fez;\nvar baz = fez;\nvar baz = fez;'
+          code: 'var baz = fez;\nvar baz = fez;\nvar baz = fez;\n'
         },
         {
           type: 'indented',
+          val: '    var baz = fez;\n    var baz = fez;\n',
+          description: 'Another example',
           language: '',
-          description: 'Another example\n',
-          code: '\nvar baz = fez;\nvar baz = fez;'
+          code: 'var baz = fez;\nvar baz = fez;\n'
         },
         {
           type: 'gfm',
+          val: '```js\nvar foo = bar;\nvar foo = bar;\n```',
+          description: 'And another example',
           language: 'js',
-          description: '\n\nAnd another example\n',
-          code: '\nvar foo = bar;\nvar foo = bar;'
+          code: '\nvar foo = bar;\nvar foo = bar;\n'
         },
         {
-          type: 'jsdoc',
+          type: 'javadoc',
+          val: '@example\nvar baz = fez;\n',
+          description: 'Another example',
           language: '',
-          description: '\nAnother example\n',
-          code: '\nvar baz = fez;'
+          code: '\nvar baz = fez;\n'
         },
         {
-          type: 'jsdoc',
+          type: 'javadoc',
+          val: '@example\n// this is a comment\nvar alalla = zzzz;\n',
+          description: 'And another example',
           language: '',
-          description: '\nAnd another example\n',
-          code: '\n// this is a comment\nvar alalla = zzzz;'
+          code: '\n// this is a comment\nvar alalla = zzzz;\n'
         },
         {
           type: 'indented',
+          val: '    var baz = fez;\n    var baz = fez;\n',
+          description: 'and another example',
           language: '',
-          description: 'and another example\n',
-          code: '\nvar baz = fez;\nvar baz = fez;'
+          code: 'var baz = fez;\nvar baz = fez;\n'
         }
       ],
-      footer: 'This is some random closing text.',
       tags: [
         {
           type: 'tag',
@@ -82,41 +99,65 @@ describe('examples', function() {
     });
   });
 
-  it('should work with arbitrary markdown', function() {
+  it('should work with arbitrary markdown', function () {
     var tok = tokenize(fixtures.markdown);
 
     assert.deepEqual(tok, {
       description: 'Set a parser that can later be used to parse any given string.',
-      examples: [
-        {
-          type: 'gfm',
-          language: 'js',
-          description: '',
-          code: '\n// foo.parser(name, replacements)\nfoo.parser(\"foo\", function (a, b, c) {\n    // body...\n})'
-        }
-      ],
-      footer: '\n  This is arbitrary text.\n\n  * This is arbitrary text.\n  * This is arbitrary text.\n  * This is arbitrary text.\n\n**Example**\n\n{%= docs("example-parser.md") %}\n\nThis is a another description after the example.',
-      tags: [
-        '@param {String} `alpha`',
-        '@param {Object|Array} `arr` Object or array of replacement patterns to associate.',
-        '@property {String|RegExp} [arr] `pattern`',
-        '@property {String|Function} [arr] `replacement`',
-        '@param {String} `beta`',
-        '@property {Array} [beta] `foo` This is foo option.',
-        '@property {Array} [beta] `bar` This is bar option',
-        '@return {Strings} to allow chaining',
-        '@api public'
-      ]
+      footer: 'This is arbitrary text.\n\n  * This is arbitrary text.\n  * This is arbitrary text.\n  * This is arbitrary text.\n\n**Example**\n\n{%= docs("example-parser.md") %}\n\nThis is a another description after the example.',
+      examples: [{
+        type: 'gfm',
+        val: '```js\n// foo.parser(name, replacements)\nfoo.parser("foo", function (a, b, c) {\n    // body...\n})\n```',
+        description: '',
+        language: 'js',
+        code: '\n// foo.parser(name, replacements)\nfoo.parser("foo", function (a, b, c) {\n    // body...\n})\n'
+      }],
+      tags: [{
+        type: 'tag',
+        raw: '@param {String} `alpha`',
+        key: 'param',
+        val: '{String} `alpha`'
+      }, {
+        type: 'tag',
+        raw: '@param {Object|Array} `arr` Object or array of replacement patterns to associate.',
+        key: 'param',
+        val: '{Object|Array} `arr` Object or array of replacement patterns to associate.'
+      }, {
+        type: 'tag',
+        raw: '@property {String|RegExp} [arr] `pattern`',
+        key: 'property',
+        val: '{String|RegExp} [arr] `pattern`'
+      }, {
+        type: 'tag',
+        raw: '@property {String|Function} [arr] `replacement`',
+        key: 'property',
+        val: '{String|Function} [arr] `replacement`'
+      }, {
+        type: 'tag',
+        raw: '@param {String} `beta`',
+        key: 'param',
+        val: '{String} `beta`'
+      }, {
+        type: 'tag',
+        raw: '@property {Array} [beta] `foo` This is foo option.',
+        key: 'property',
+        val: '{Array} [beta] `foo` This is foo option.'
+      }, {
+        type: 'tag',
+        raw: '@property {Array} [beta] `bar` This is bar option',
+        key: 'property',
+        val: '{Array} [beta] `bar` This is bar option'
+      }, {
+        type: 'tag',
+        raw: '@return {Strings} to allow chaining',
+        key: 'return',
+        val: '{Strings} to allow chaining'
+      }, {
+        type: 'tag',
+        raw: '@api public',
+        key: 'api',
+        val: 'public'
+      }]
     });
   });
-
-  // it.only('should tokenize gfm, indented or javadoc examples', function() {
-  //   var comments = extract(fixtures.angular).filter(function(comment) {
-  //     return comment.type === 'block' && comment.raw.charAt(0) === '*';
-  //   }).slice(1);
-
-  //   console.log(comments.slice(0, 5))
-  //   // var tok = tokenize(comment);
-
-  // });
 });

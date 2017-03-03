@@ -12,7 +12,7 @@ module.exports = function tokenize(comment, options) {
   var opts = extend({}, options);
   var snapdragon = new Snapdragon();
 
-  var token = {description: '', examples: [], tags: []};
+  var token = {description: '', footer: '', examples: [], tags: []};
   snapdragon.parser.use(parsers(opts, token));
 
   var ast = snapdragon.parse(str);

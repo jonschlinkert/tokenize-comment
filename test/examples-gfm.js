@@ -24,17 +24,29 @@ describe('gfm', function() {
 
     assert.deepEqual(tok, {
       description: 'foo bar baz',
+      footer: '',
       examples: [
-         {
-           code: '\nvar foo = "bar";',
-           description: '',
-           language: 'js',
-           type: 'gfm'
-         }
+        {
+          type: 'gfm',
+          val: '```js\nvar foo = "bar";\n```',
+          description: '',
+          language: 'js',
+          code: '\nvar foo = "bar";\n'
+        }
       ],
       tags: [
-        '@param {string} something',
-        '@param {string} else'
+        {
+          type: 'tag',
+          raw: '@param {string} something',
+          key: 'param',
+          val: '{string} something'
+        },
+        {
+          type: 'tag',
+          raw: '@param {string} else',
+          key: 'param',
+          val: '{string} else'
+        }
       ]
     });
   });
@@ -56,17 +68,29 @@ describe('gfm', function() {
 
     assert.deepEqual(tok, {
       description: 'foo bar baz',
+      footer: '',
       examples: [
-         {
-           code: '\n   var foo = "bar";\n   var baz = "qux";',
-           description: '',
-           language: 'js',
-           type: 'gfm'
-         }
+        {
+          type: 'gfm',
+          val: '```js\n   var foo = "bar";\n   var baz = "qux";\n```',
+          description: '',
+          language: 'js',
+          code: '\n   var foo = "bar";\n   var baz = "qux";\n'
+        }
       ],
       tags: [
-        '@param {string} something',
-        '@param {string} else'
+        {
+          type: 'tag',
+          raw: '@param {string} something',
+          key: 'param',
+          val: '{string} something'
+        },
+        {
+          type: 'tag',
+          raw: '@param {string} else',
+          key: 'param',
+          val: '{string} else'
+        }
       ]
     });
   });
@@ -89,17 +113,29 @@ describe('gfm', function() {
 
     assert.deepEqual(tok, {
       description: 'foo bar baz',
+      footer: '',
       examples: [
-         {
-           code: '\nvar foo = "bar";\nvar baz = "qux";',
-           description: 'This is a description for an example.',
-           language: 'js',
-           type: 'gfm'
-         }
+        {
+          type: 'gfm',
+          val: '```js\nvar foo = "bar";\nvar baz = "qux";\n```',
+          description: 'This is a description for an example.',
+          language: 'js',
+          code: '\nvar foo = "bar";\nvar baz = "qux";\n'
+        }
       ],
       tags: [
-        '@param {string} something',
-        '@param {string} else'
+        {
+          type: 'tag',
+          raw: '@param {string} something',
+          key: 'param',
+          val: '{string} something'
+        },
+        {
+          type: 'tag',
+          raw: '@param {string} else',
+          key: 'param',
+          val: '{string} else'
+        }
       ]
     });
   });
@@ -123,44 +159,87 @@ describe('gfm', function() {
 
     assert.deepEqual(tok, {
       description: 'foo bar baz',
+      footer: '',
       examples: [
          {
-           code: '\nvar foo = "bar";\nvar baz = "qux";',
-           description: 'This is a description for an example.\n',
+           type: 'gfm',
+           val: '```js\nvar foo = "bar";\nvar baz = "qux";\n```',
+           description: 'This is a description for an example.',
            language: 'js',
-           type: 'gfm'
+           code: '\nvar foo = "bar";\nvar baz = "qux";\n'
          }
       ],
       tags: [
-        '@param {string} something',
-        '@param {string} else'
+        {
+          type: 'tag',
+          raw: '@param {string} something',
+          key: 'param',
+          val: '{string} something'
+        },
+        {
+          type: 'tag',
+          raw: '@param {string} else',
+          key: 'param',
+          val: '{string} else'
+        }
       ]
     });
   });
 
-  it.skip('should work when no stars prefix the gfm example', function () {
+  it('should work when no stars prefix the gfm example', function () {
     var tok = tokenize(fixtures['examples-gfm-no-stars']);
-
-    // assert.deepEqual(tok, {
-    //   description: 'Invokes the `iterator` function once for each item in `obj` collection, which can be either an\n object or an array. The `iterator` function is invoked with `iterator(value, key, obj)`, where `value`\n is the value of an object property or an array element, `key` is the object property key or\n array element index and obj is the `obj` itself. Specifying a `context` for the function is optional.',
-    //   examples: [
-    //     {
-    //       type: 'indented',
-    //       language: '',
-    //       description: ' It is worth noting that `.forEach` does not iterate over inherited properties because it filters\n using the `hasOwnProperty` method.\n\n Unlike ES262\'s\n [Array.prototype.forEach](http://www.ecma-international.org/ecma-262/5.1/#sec-15.4.4.18),\n Providing \'undefined\' or \'null\' values for `obj` will not throw a TypeError, but rather just\n return the value provided.\n\n   ```js',
-    //       code: '\n var values = {name: \'misko\', gender: \'male\'};\n var log = [];\n angular.forEach(values, function(value, key) {\n   this.push(key + \': \' + value);\n }, log);\n expect(log).toEqual([\'name: misko\', \'gender: male\']);'
-    //     }
-    //   ],
-    //   tags: [
-    //     '@ngdoc function',
-    //     '@name angular.forEach',
-    //     '@module ng',
-    //     '@kind function',
-    //     '@param {Object|Array} obj Object to iterate over.',
-    //     '@param {Function} iterator Iterator function.',
-    //     '@param {Object=} context Object to become context (`this`) for the iterator function.',
-    //     '@returns {Object|Array} Reference to `obj`.'
-    //   ]
-    // });
+    // console.log(tok)
+    assert.deepEqual(tok, {
+      description: 'Invokes the `iterator` function once for each item in `obj` collection, which can be either an\n object or an array. The `iterator` function is invoked with `iterator(value, key, obj)`, where `value`\n is the value of an object property or an array element, `key` is the object property key or\n array element index and obj is the `obj` itself. Specifying a `context` for the function is optional.\n\n It is worth noting that `.forEach` does not iterate over inherited properties because it filters\n using the `hasOwnProperty` method.',
+      footer: '',
+      examples: [{
+        type: 'gfm',
+        val: '   ```js\n     var values = {name: \'misko\', gender: \'male\'};\n     var log = [];\n     angular.forEach(values, function(value, key) {\n       this.push(key + \': \' + value);\n     }, log);\n     expect(log).toEqual([\'name: misko\', \'gender: male\']);\n   ```',
+        description: 'Unlike ES262\'s\n [Array.prototype.forEach](http://www.ecma-international.org/ecma-262/5.1/#sec-15.4.4.18),\n Providing \'undefined\' or \'null\' values for `obj` will not throw a TypeError, but rather just\n return the value provided.',
+        language: 'js',
+        code: '\n  var values = {name: \'misko\', gender: \'male\'};\n  var log = [];\n  angular.forEach(values, function(value, key) {\n    this.push(key + \': \' + value);\n  }, log);\n  expect(log).toEqual([\'name: misko\', \'gender: male\']);\n'
+      }],
+      tags: [{
+        type: 'tag',
+        raw: '@ngdoc function',
+        key: 'ngdoc',
+        val: 'function'
+      }, {
+        type: 'tag',
+        raw: '@name angular.forEach',
+        key: 'name',
+        val: 'angular.forEach'
+      }, {
+        type: 'tag',
+        raw: '@module ng',
+        key: 'module',
+        val: 'ng'
+      }, {
+        type: 'tag',
+        raw: '@kind function',
+        key: 'kind',
+        val: 'function'
+      }, {
+        type: 'tag',
+        raw: '@param {Object|Array} obj Object to iterate over.',
+        key: 'param',
+        val: '{Object|Array} obj Object to iterate over.'
+      }, {
+        type: 'tag',
+        raw: '@param {Function} iterator Iterator function.',
+        key: 'param',
+        val: '{Function} iterator Iterator function.'
+      }, {
+        type: 'tag',
+        raw: '@param {Object=} context Object to become context (`this`) for the iterator function.',
+        key: 'param',
+        val: '{Object=} context Object to become context (`this`) for the iterator function.'
+      }, {
+        type: 'tag',
+        raw: '@returns {Object|Array} Reference to `obj`.',
+        key: 'returns',
+        val: '{Object|Array} Reference to `obj`.'
+      }]
+    });
   });
 });

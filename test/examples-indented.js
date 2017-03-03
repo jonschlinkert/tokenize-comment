@@ -19,18 +19,25 @@ describe('indented', function() {
 
     assert.deepEqual(tok, {
       description: 'foo bar baz',
-      examples: [
-         {
-           code: '\nvar foo = "bar";',
-           description: '',
-           language: '',
-           type: 'indented'
-         }
-      ],
-      tags: [
-        '@param {string} something',
-        '@param {string} else'
-      ]
+      footer: '',
+      examples: [{
+        type: 'indented',
+        val: '    var foo = "bar";\n',
+        description: '',
+        language: '',
+        code: 'var foo = "bar";\n'
+      }],
+      tags: [{
+        type: 'tag',
+        raw: '@param {string} something',
+        key: 'param',
+        val: '{string} something'
+      }, {
+        type: 'tag',
+        raw: '@param {string} else',
+        key: 'param',
+        val: '{string} else'
+      }]
     });
   });
 
@@ -49,17 +56,26 @@ describe('indented', function() {
 
     assert.deepEqual(tok, {
       description: 'foo bar baz',
-      examples: [
-         {
-           code: '\n   var foo = "bar";\n   var baz = "qux";',
-           description: '',
-           language: '',
-           type: 'indented'
-         }
-      ],
-      tags: [
-        '@param {string} something',
-        '@param {string} else'
+      footer: '',
+      examples: [{
+        type: 'indented',
+        val: '       var foo = "bar";\n       var baz = "qux";\n',
+        description: '',
+        language: '',
+        code: '   var foo = "bar";\n   var baz = "qux";\n'
+      }],
+      tags: [{
+          type: 'tag',
+          raw: '@param {string} something',
+          key: 'param',
+          val: '{string} something'
+        },
+        {
+          type: 'tag',
+          raw: '@param {string} else',
+          key: 'param',
+          val: '{string} else'
+        }
       ]
     });
   });
@@ -80,18 +96,25 @@ describe('indented', function() {
 
     assert.deepEqual(tok, {
       description: 'foo bar baz',
-      examples: [
-         {
-           code: '\nvar foo = "bar";\nvar baz = "qux";',
-           description: 'This is a description for an example.',
-           language: '',
-           type: 'indented'
-         }
-      ],
-      tags: [
-        '@param {string} something',
-        '@param {string} else'
-      ]
+      footer: '',
+      examples: [{
+        type: 'indented',
+        val: '    var foo = "bar";\n    var baz = "qux";\n',
+        description: 'This is a description for an example.',
+        language: '',
+        code: 'var foo = "bar";\nvar baz = "qux";\n'
+      }],
+      tags: [{
+        type: 'tag',
+        raw: '@param {string} something',
+        key: 'param',
+        val: '{string} something'
+      }, {
+        type: 'tag',
+        raw: '@param {string} else',
+        key: 'param',
+        val: '{string} else'
+      }]
     });
   });
 
@@ -112,18 +135,27 @@ describe('indented', function() {
 
     assert.deepEqual(tok, {
       description: 'foo bar baz',
+      footer: '',
       examples: [
          {
-           code: '\nvar foo = "bar";\nvar baz = "qux";',
-           description: 'This is a description for an example.\n',
+           code: 'var foo = "bar";\nvar baz = "qux";\n',
+           description: 'This is a description for an example.',
            language: '',
-           type: 'indented'
+           type: 'indented',
+           val: '    var foo = \"bar\";\n    var baz = \"qux\";\n'
          }
       ],
-      tags: [
-        '@param {string} something',
-        '@param {string} else'
-      ]
+      tags: [{
+        type: 'tag',
+        raw: '@param {string} something',
+        key: 'param',
+        val: '{string} something'
+      }, {
+        type: 'tag',
+        raw: '@param {string} else',
+        key: 'param',
+        val: '{string} else'
+      }]
     });
   });
 });

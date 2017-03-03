@@ -20,18 +20,25 @@ describe('javadoc', function() {
 
     assert.deepEqual(tok, {
       description: 'foo bar baz',
-      examples: [
-         {
-           code: '\nvar foo = "bar";',
-           description: '',
-           language: '',
-           type: 'jsdoc'
-         }
-      ],
-      tags: [
-        '@param {string} something',
-        '@param {string} else'
-      ]
+      footer: '',
+      examples: [{
+        type: 'javadoc',
+        val: '@example\nvar foo = "bar";\n',
+        description: '',
+        language: '',
+        code: '\nvar foo = "bar";\n'
+      }],
+      tags: [{
+        type: 'tag',
+        raw: '@param {string} something',
+        key: 'param',
+        val: '{string} something'
+      }, {
+        type: 'tag',
+        raw: '@param {string} else',
+        key: 'param',
+        val: '{string} else'
+      }]
     });
   });
 
@@ -51,18 +58,25 @@ describe('javadoc', function() {
 
     assert.deepEqual(tok, {
       description: 'foo bar baz',
-      examples: [
-         {
-           code: '\n   var foo = "bar";\n   var baz = "qux";',
-           description: '',
-           language: '',
-           type: 'jsdoc'
-         }
-      ],
-      tags: [
-        '@param {string} something',
-        '@param {string} else'
-      ]
+      footer: '',
+      examples: [{
+        type: 'javadoc',
+        val: '@example\n   var foo = "bar";\n   var baz = "qux";\n',
+        description: '',
+        language: '',
+        code: '\n   var foo = "bar";\n   var baz = "qux";\n'
+      }],
+      tags: [{
+        type: 'tag',
+        raw: '@param {string} something',
+        key: 'param',
+        val: '{string} something'
+      }, {
+        type: 'tag',
+        raw: '@param {string} else',
+        key: 'param',
+        val: '{string} else'
+      }]
     });
   });
 
@@ -83,18 +97,25 @@ describe('javadoc', function() {
 
     assert.deepEqual(tok, {
       description: 'foo bar baz',
-      examples: [
-         {
-           code: '\nvar foo = "bar";\nvar baz = "qux";',
-           description: 'This is a description for an example.',
-           language: '',
-           type: 'jsdoc'
-         }
-      ],
-      tags: [
-        '@param {string} something',
-        '@param {string} else'
-      ]
+      footer: '',
+      examples: [{
+        type: 'javadoc',
+        val: '@example\nvar foo = "bar";\nvar baz = "qux";\n',
+        description: 'This is a description for an example.',
+        language: '',
+        code: '\nvar foo = "bar";\nvar baz = "qux";\n'
+      }],
+      tags: [{
+        type: 'tag',
+        raw: '@param {string} something',
+        key: 'param',
+        val: '{string} something'
+      }, {
+        type: 'tag',
+        raw: '@param {string} else',
+        key: 'param',
+        val: '{string} else'
+      }]
     });
   });
 
@@ -116,18 +137,25 @@ describe('javadoc', function() {
 
     assert.deepEqual(tok, {
       description: 'foo bar baz',
-      examples: [
-         {
-           code: '\nvar foo = "bar";\nvar baz = "qux";',
-           description: 'This is a description for an example.\n',
-           language: '',
-           type: 'jsdoc'
-         }
-      ],
-      tags: [
-        '@param {string} something',
-        '@param {string} else'
-      ]
+      footer: '',
+      examples: [{
+        type: 'javadoc',
+        val: '@example\nvar foo = "bar";\nvar baz = "qux";\n',
+        description: 'This is a description for an example.',
+        language: '',
+        code: '\nvar foo = "bar";\nvar baz = "qux";\n'
+      }],
+      tags: [{
+        type: 'tag',
+        raw: '@param {string} something',
+        key: 'param',
+        val: '{string} something'
+      }, {
+        type: 'tag',
+        raw: '@param {string} else',
+        key: 'param',
+        val: '{string} else'
+      }]
     });
   });
 });
