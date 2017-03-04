@@ -8,6 +8,78 @@ describe('indented', function() {
   it('should tokenize indented code examples', function() {
     var tok = tokenize([
       '/**',
+      ' * Code:',
+      ' *     @foo',
+      ' *     @bar',
+      ' *     @baz',
+      ' */',
+    ].join('\n'));
+
+    assert.deepEqual(tok, {
+      description: 'Code:',
+      footer: '',
+      examples: [{
+        type: 'indented',
+        val: '    @foo\n    @bar\n    @baz\n',
+        description: '',
+        language: '',
+        code: '@foo\n@bar\n@baz\n'
+      }],
+      tags: []
+    });
+  });
+
+  it('should work with extra indentation', function() {
+    var tok = tokenize([
+      '/**',
+      ' *   Code:',
+      ' *       @foo',
+      ' *       @bar',
+      ' *       @baz',
+      ' */',
+    ].join('\n'));
+
+    assert.deepEqual(tok, {
+      description: 'Code:',
+      footer: '',
+      examples: [{
+        type: 'indented',
+        val: '    @foo\n    @bar\n    @baz\n',
+        description: '',
+        language: '',
+        code: '@foo\n@bar\n@baz\n'
+      }],
+      tags: []
+    });
+  });
+
+  it('should work with comments not prefixed by stars', function() {
+    var tok = tokenize([
+      '',
+      ' Code:',
+      '     @foo',
+      '     @bar',
+      '     @baz',
+      '',
+    ].join('\n'));
+
+    assert.deepEqual(tok, {
+      description: 'Code:',
+      footer: '',
+      examples: [{
+        type: 'indented',
+        val: '    @foo\n    @bar\n    @baz\n',
+        description: '',
+        language: '',
+        code: '@foo\n@bar\n@baz\n'
+      }],
+      tags: []
+    });
+  });
+
+  it('should tokenize indented code examples', function() {
+    var tok = tokenize([
+      '/**',
       ' * foo bar baz',
       ' * ',
       ' *     var foo = "bar";',

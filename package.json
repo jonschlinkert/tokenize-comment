@@ -21,10 +21,11 @@
   },
   "keywords": [
     "comment",
-    "generategenerator",
     "tokenize"
   ],
   "dependencies": {
+    "array-each": "^1.0.1",
+    "define-property": "^0.2.5",
     "extend-shallow": "^2.0.1",
     "snapdragon": "^0.10.1"
   },

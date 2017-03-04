@@ -19,7 +19,7 @@ describe('examples', function() {
 
   // });
 
-  it.only('should tokenize gfm, indented or javadoc examples', function () {
+  it('should tokenize gfm, indented or javadoc examples', function () {
     var tok = tokenize(fixtures['examples-multiple']);
 
     assert.deepEqual(tok, {
