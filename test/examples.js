@@ -24,7 +24,7 @@ describe('examples', function() {
 
     assert.deepEqual(tok, {
       description: 'This is a comment with\nseveral lines of text.',
-      footer: 'This is some random closing text.',
+      footer: '',
       examples: [
         {
           type: 'gfm',
@@ -64,16 +64,9 @@ describe('examples', function() {
         {
           type: 'javadoc',
           val: '@example\n// this is a comment\nvar alalla = zzzz;\n',
-          description: 'And another example',
+          description: '',
           language: '',
           code: '\n// this is a comment\nvar alalla = zzzz;\n'
-        },
-        {
-          type: 'indented',
-          val: '    var baz = fez;\n    var baz = fez;\n',
-          description: 'and another example',
-          language: '',
-          code: 'var baz = fez;\nvar baz = fez;\n'
         }
       ],
       tags: [

@@ -35,19 +35,9 @@
  * @example
  * var baz = fez;
  *
- *
- * And another example
- *
  * @example
  * // this is a comment
  * var alalla = zzzz;
- *
- * and another example
- *
- *     var baz = fez;
- *     var baz = fez;
- *
- * This is some random closing text.
  *
  * @param {String} foo bar
  * @returns {Object} Instance of Foo
