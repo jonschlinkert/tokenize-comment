@@ -1,6 +1,6 @@
 {
   "name": "tokenize-comment",
-  "description": "Tokenize a single JavaScript code comment into sections that can be parsed. ",
+  "description": "Uses snapdragon to tokenize a single JavaScript block comment into an object, with description, tags, and code example sections that can be passed to any other comment parsers for further parsing.",
   "version": "0.1.0",
   "homepage": "https://github.com/jonschlinkert/tokenize-comment",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
@@ -10,7 +10,8 @@
   },
   "license": "MIT",
   "files": [
-    "index.js"
+    "index.js",
+    "lib"
   ],
   "main": "index.js",
   "engines": {
@@ -19,10 +20,6 @@
   "scripts": {
     "test": "mocha"
   },
-  "keywords": [
-    "comment",
-    "tokenize"
-  ],
   "dependencies": {
     "array-each": "^1.0.1",
     "define-property": "^0.2.5",
@@ -31,6 +28,39 @@
   },
   "devDependencies": {
     "extract-comments": "^0.10.1",
+    "gulp-format-md": "^0.1.11",
     "mocha": "^3.2.0"
+  },
+  "keywords": [
+    "code",
+    "comment",
+    "examples",
+    "gfm",
+    "indented",
+    "javadoc",
+    "javascript",
+    "jsdoc",
+    "parse",
+    "tokenize"
+  ],
+  "verb": {
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "related": {
+      "list": [
+        "snapdragon",
+        "strip-comments",
+        "parse-comments"
+      ]
+    },
+    "lint": {
+      "reflinks": true
+    }
   }
 }
