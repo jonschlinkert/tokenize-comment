@@ -23,7 +23,6 @@ module.exports = function(comment, options) {
   snapdragon.parser.use(middleware(opts, token));
   var str = utils.stripStars(comment);
   var ast = snapdragon.parse(str);
-
   define(token, 'ast', ast);
   return token;
 };

@@ -23,10 +23,10 @@ describe('javadoc', function() {
       footer: '',
       examples: [{
         type: 'javadoc',
-        val: '@example\nvar foo = "bar";\n',
-        description: '',
         language: '',
-        code: '\nvar foo = "bar";\n'
+        description: '',
+        raw: '@example\nvar foo = "bar";\n',
+        val: '\nvar foo = "bar";\n'
       }],
       tags: [{
         type: 'tag',
@@ -61,10 +61,10 @@ describe('javadoc', function() {
       footer: '',
       examples: [{
         type: 'javadoc',
-        val: '@example\n   var foo = "bar";\n   var baz = "qux";\n',
-        description: '',
         language: '',
-        code: '\n   var foo = "bar";\n   var baz = "qux";\n'
+        description: '',
+        raw: '@example\n   var foo = "bar";\n   var baz = "qux";\n',
+        val: '\n   var foo = "bar";\n   var baz = "qux";\n'
       }],
       tags: [{
         type: 'tag',
@@ -100,10 +100,10 @@ describe('javadoc', function() {
       footer: '',
       examples: [{
         type: 'javadoc',
-        val: '@example\nvar foo = "bar";\nvar baz = "qux";\n',
-        description: 'This is a description for an example.',
         language: '',
-        code: '\nvar foo = "bar";\nvar baz = "qux";\n'
+        description: 'This is a description for an example.',
+        raw: '@example\nvar foo = "bar";\nvar baz = "qux";\n',
+        val: '\nvar foo = "bar";\nvar baz = "qux";\n'
       }],
       tags: [{
         type: 'tag',
@@ -140,10 +140,10 @@ describe('javadoc', function() {
       footer: '',
       examples: [{
         type: 'javadoc',
-        val: '@example\nvar foo = "bar";\nvar baz = "qux";\n',
-        description: 'This is a description for an example.',
         language: '',
-        code: '\nvar foo = "bar";\nvar baz = "qux";\n'
+        description: 'This is a description for an example.',
+        raw: '@example\nvar foo = "bar";\nvar baz = "qux";\n',
+        val: '\nvar foo = "bar";\nvar baz = "qux";\n'
       }],
       tags: [{
         type: 'tag',

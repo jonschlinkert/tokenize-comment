@@ -20,10 +20,10 @@ describe('indented', function() {
       footer: '',
       examples: [{
         type: 'indented',
-        val: '    @foo\n    @bar\n    @baz\n',
-        description: '',
         language: '',
-        code: '@foo\n@bar\n@baz\n'
+        description: '',
+        raw: '    @foo\n    @bar\n    @baz\n',
+        val: '@foo\n@bar\n@baz\n'
       }],
       tags: []
     });
@@ -44,10 +44,10 @@ describe('indented', function() {
       footer: '',
       examples: [{
         type: 'indented',
-        val: '    @foo\n    @bar\n    @baz\n',
-        description: '',
         language: '',
-        code: '@foo\n@bar\n@baz\n'
+        description: '',
+        raw: '    @foo\n    @bar\n    @baz\n',
+        val: '@foo\n@bar\n@baz\n'
       }],
       tags: []
     });
@@ -68,16 +68,16 @@ describe('indented', function() {
       footer: '',
       examples: [{
         type: 'indented',
-        val: '    @foo\n    @bar\n    @baz\n',
-        description: '',
         language: '',
-        code: '@foo\n@bar\n@baz\n'
+        description: '',
+        raw: '    @foo\n    @bar\n    @baz\n',
+        val: '@foo\n@bar\n@baz\n'
       }],
       tags: []
     });
   });
 
-  it('should tokenize indented code examples', function() {
+  it('should tokenize single-line indented code examples', function() {
     var tok = tokenize([
       '/**',
       ' * foo bar baz',
@@ -94,10 +94,87 @@ describe('indented', function() {
       footer: '',
       examples: [{
         type: 'indented',
-        val: '    var foo = "bar";\n',
-        description: '',
         language: '',
-        code: 'var foo = "bar";\n'
+        description: '',
+        raw: '    var foo = "bar";\n',
+        val: 'var foo = "bar";\n'
+      }],
+      tags: [{
+        type: 'tag',
+        raw: '@param {string} something',
+        key: 'param',
+        val: '{string} something'
+      }, {
+        type: 'tag',
+        raw: '@param {string} else',
+        key: 'param',
+        val: '{string} else'
+      }]
+    });
+  });
+
+  it('should tokenize multi-line indented code examples', function() {
+    var tok = tokenize([
+      '/**',
+      ' * foo bar baz',
+      ' * ',
+      ' *     var foo = "bar";',
+      ' *     var baz = "qux";',
+      ' *',
+      ' * @param {string} something',
+      ' * @param {string} else',
+      ' */',
+    ].join('\n'));
+
+    assert.deepEqual(tok, {
+      description: 'foo bar baz',
+      footer: '',
+      examples: [{
+        type: 'indented',
+        language: '',
+        description: '',
+        raw: '    var foo = "bar";\n    var baz = "qux";\n',
+        val: 'var foo = "bar";\nvar baz = "qux";\n'
+      }],
+      tags: [{
+        type: 'tag',
+        raw: '@param {string} something',
+        key: 'param',
+        val: '{string} something'
+      }, {
+        type: 'tag',
+        raw: '@param {string} else',
+        key: 'param',
+        val: '{string} else'
+      }]
+    });
+  });
+
+  it('should work with multiple newlines', function() {
+    var tok = tokenize([
+      '/**',
+      ' * foo bar baz',
+      ' * ',
+      ' *     var foo = "bar";',
+      ' * ',
+      ' * ',
+      ' * ',
+      ' *     var baz = "qux";',
+      ' *',
+      ' * @param {string} something',
+      ' * @param {string} else',
+      ' */',
+    ].join('\n'));
+
+    assert.deepEqual(tok, {
+      description: 'foo bar baz',
+      footer: '',
+      examples: [{
+        type: 'indented',
+        language: '',
+        description: '',
+        raw: '    var foo = \"bar\";\n\n\n\n    var baz = \"qux\";\n',
+        val: 'var foo = \"bar\";\n\n\n\nvar baz = \"qux\";\n'
       }],
       tags: [{
         type: 'tag',
@@ -131,10 +208,10 @@ describe('indented', function() {
       footer: '',
       examples: [{
         type: 'indented',
-        val: '       var foo = "bar";\n       var baz = "qux";\n',
-        description: '',
         language: '',
-        code: '   var foo = "bar";\n   var baz = "qux";\n'
+        description: '',
+        raw: '       var foo = "bar";\n       var baz = "qux";\n',
+        val: '   var foo = "bar";\n   var baz = "qux";\n'
       }],
       tags: [{
           type: 'tag',
@@ -171,10 +248,10 @@ describe('indented', function() {
       footer: '',
       examples: [{
         type: 'indented',
-        val: '    var foo = "bar";\n    var baz = "qux";\n',
-        description: 'This is a description for an example.',
         language: '',
-        code: 'var foo = "bar";\nvar baz = "qux";\n'
+        description: 'This is a description for an example.',
+        raw: '    var foo = "bar";\n    var baz = "qux";\n',
+        val: 'var foo = "bar";\nvar baz = "qux";\n'
       }],
       tags: [{
         type: 'tag',
@@ -210,11 +287,11 @@ describe('indented', function() {
       footer: '',
       examples: [
          {
-           code: 'var foo = "bar";\nvar baz = "qux";\n',
-           description: 'This is a description for an example.',
-           language: '',
            type: 'indented',
-           val: '    var foo = \"bar\";\n    var baz = \"qux\";\n'
+           language: '',
+           description: 'This is a description for an example.',
+           raw: '    var foo = \"bar\";\n    var baz = \"qux\";\n',
+           val: 'var foo = "bar";\nvar baz = "qux";\n'
          }
       ],
       tags: [{

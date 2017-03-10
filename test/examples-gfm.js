@@ -28,10 +28,10 @@ describe('gfm', function() {
       examples: [
         {
           type: 'gfm',
-          val: '```js\nvar foo = "bar";\n```',
-          description: '',
           language: 'js',
-          code: '\nvar foo = "bar";\n'
+          description: '',
+          raw: '```js\nvar foo = "bar";\n```',
+          val: '\nvar foo = "bar";\n'
         }
       ],
       tags: [
@@ -72,10 +72,10 @@ describe('gfm', function() {
       examples: [
         {
           type: 'gfm',
-          val: '```js\n   var foo = "bar";\n   var baz = "qux";\n```',
-          description: '',
           language: 'js',
-          code: '\n   var foo = "bar";\n   var baz = "qux";\n'
+          description: '',
+          raw: '```js\n   var foo = "bar";\n   var baz = "qux";\n```',
+          val: '\n   var foo = "bar";\n   var baz = "qux";\n'
         }
       ],
       tags: [
@@ -117,10 +117,10 @@ describe('gfm', function() {
       examples: [
         {
           type: 'gfm',
-          val: '```js\nvar foo = "bar";\nvar baz = "qux";\n```',
-          description: 'This is a description for an example.',
           language: 'js',
-          code: '\nvar foo = "bar";\nvar baz = "qux";\n'
+          description: 'This is a description for an example.',
+          raw: '```js\nvar foo = "bar";\nvar baz = "qux";\n```',
+          val: '\nvar foo = "bar";\nvar baz = "qux";\n'
         }
       ],
       tags: [
@@ -163,10 +163,54 @@ describe('gfm', function() {
       examples: [
          {
            type: 'gfm',
-           val: '```js\nvar foo = "bar";\nvar baz = "qux";\n```',
-           description: 'This is a description for an example.',
            language: 'js',
-           code: '\nvar foo = "bar";\nvar baz = "qux";\n'
+           description: 'This is a description for an example.',
+           raw: '```js\nvar foo = "bar";\nvar baz = "qux";\n```',
+           val: '\nvar foo = "bar";\nvar baz = "qux";\n'
+         }
+      ],
+      tags: [
+        {
+          type: 'tag',
+          raw: '@param {string} something',
+          key: 'param',
+          val: '{string} something'
+        },
+        {
+          type: 'tag',
+          raw: '@param {string} else',
+          key: 'param',
+          val: '{string} else'
+        }
+      ]
+    });
+  });
+
+  it('should support gfm examples without extra leading/trailing newlines', function() {
+    var tok = tokenize([
+      '/**',
+      ' * foo bar baz',
+      ' * ',
+      ' * This is a description for an example.',
+      ' * ```js',
+      ' * var foo = "bar";',
+      ' * var baz = "qux";',
+      ' * ```',
+      ' * @param {string} something',
+      ' * @param {string} else',
+      ' */',
+    ].join('\n'));
+
+    assert.deepEqual(tok, {
+      description: 'foo bar baz',
+      footer: '',
+      examples: [
+         {
+           type: 'gfm',
+           language: 'js',
+           description: 'This is a description for an example.',
+           raw: '```js\nvar foo = "bar";\nvar baz = "qux";\n```',
+           val: '\nvar foo = "bar";\nvar baz = "qux";\n'
          }
       ],
       tags: [
@@ -188,16 +232,16 @@ describe('gfm', function() {
 
   it('should work when no stars prefix the gfm example', function () {
     var tok = tokenize(fixtures['examples-gfm-no-stars']);
-    // console.log(tok)
+
     assert.deepEqual(tok, {
       description: 'Invokes the `iterator` function once for each item in `obj` collection, which can be either an\n object or an array. The `iterator` function is invoked with `iterator(value, key, obj)`, where `value`\n is the value of an object property or an array element, `key` is the object property key or\n array element index and obj is the `obj` itself. Specifying a `context` for the function is optional.\n\n It is worth noting that `.forEach` does not iterate over inherited properties because it filters\n using the `hasOwnProperty` method.',
       footer: '',
       examples: [{
         type: 'gfm',
-        val: '   ```js\n     var values = {name: \'misko\', gender: \'male\'};\n     var log = [];\n     angular.forEach(values, function(value, key) {\n       this.push(key + \': \' + value);\n     }, log);\n     expect(log).toEqual([\'name: misko\', \'gender: male\']);\n   ```',
-        description: 'Unlike ES262\'s\n [Array.prototype.forEach](http://www.ecma-international.org/ecma-262/5.1/#sec-15.4.4.18),\n Providing \'undefined\' or \'null\' values for `obj` will not throw a TypeError, but rather just\n return the value provided.',
         language: 'js',
-        code: '\n  var values = {name: \'misko\', gender: \'male\'};\n  var log = [];\n  angular.forEach(values, function(value, key) {\n    this.push(key + \': \' + value);\n  }, log);\n  expect(log).toEqual([\'name: misko\', \'gender: male\']);\n'
+        description: 'Unlike ES262\'s\n [Array.prototype.forEach](http://www.ecma-international.org/ecma-262/5.1/#sec-15.4.4.18),\n Providing \'undefined\' or \'null\' values for `obj` will not throw a TypeError, but rather just\n return the value provided.',
+        raw: '   ```js\n     var values = {name: \'misko\', gender: \'male\'};\n     var log = [];\n     angular.forEach(values, function(value, key) {\n       this.push(key + \': \' + value);\n     }, log);\n     expect(log).toEqual([\'name: misko\', \'gender: male\']);\n   ```',
+        val: '\n  var values = {name: \'misko\', gender: \'male\'};\n  var log = [];\n  angular.forEach(values, function(value, key) {\n    this.push(key + \': \' + value);\n  }, log);\n  expect(log).toEqual([\'name: misko\', \'gender: male\']);\n'
       }],
       tags: [{
         type: 'tag',

@@ -9,16 +9,6 @@ var tokenize = require('..');
 var fixtures = support.files(__dirname, 'fixtures');
 
 describe('examples', function() {
-  // it.only('should tokenize gfm, indented or javadoc examples', function() {
-  //   var comments = extract(fixtures.angular).filter(function(comment) {
-  //     return comment.type === 'block' && comment.raw.charAt(0) === '*';
-  //   }).slice(1);
-
-  //   console.log(comments.slice(0, 5))
-  //   // var tok = tokenize(comment);
-
-  // });
-
   it('should tokenize gfm, indented or javadoc examples', function () {
     var tok = tokenize(fixtures['examples-multiple']);
 
@@ -28,45 +18,45 @@ describe('examples', function() {
       examples: [
         {
           type: 'gfm',
-          val: '```js\nvar foo = bar;\nvar foo = bar;\nvar foo = bar;\n```',
-          description: 'An example',
           language: 'js',
-          code: '\nvar foo = bar;\nvar foo = bar;\nvar foo = bar;\n'
+          description: 'An example',
+          raw: '```js\nvar foo = bar;\nvar foo = bar;\nvar foo = bar;\n```',
+          val: '\nvar foo = bar;\nvar foo = bar;\nvar foo = bar;\n'
         },
         {
           type: 'indented',
-          val: '    var baz = fez;\n    var baz = fez;\n    var baz = fez;\n',
-          description: 'Another example',
           language: '',
-          code: 'var baz = fez;\nvar baz = fez;\nvar baz = fez;\n'
+          description: 'Another example',
+          raw: '    var baz = fez;\n    var baz = fez;\n    var baz = fez;\n',
+          val: 'var baz = fez;\nvar baz = fez;\nvar baz = fez;\n'
         },
         {
           type: 'indented',
-          val: '    var baz = fez;\n    var baz = fez;\n',
-          description: 'Another example',
           language: '',
-          code: 'var baz = fez;\nvar baz = fez;\n'
+          description: 'Another example',
+          raw: '    var baz = fez;\n    var baz = fez;\n',
+          val: 'var baz = fez;\nvar baz = fez;\n'
         },
         {
           type: 'gfm',
-          val: '```js\nvar foo = bar;\nvar foo = bar;\n```',
-          description: 'And another example',
           language: 'js',
-          code: '\nvar foo = bar;\nvar foo = bar;\n'
+          description: 'And another example',
+          raw: '```js\nvar foo = bar;\nvar foo = bar;\n```',
+          val: '\nvar foo = bar;\nvar foo = bar;\n'
         },
         {
           type: 'javadoc',
-          val: '@example\nvar baz = fez;\n',
+          language: '',
           description: 'Another example',
-          language: '',
-          code: '\nvar baz = fez;\n'
+          raw: '@example\nvar baz = fez;\n',
+          val: '\nvar baz = fez;\n'
         },
         {
           type: 'javadoc',
-          val: '@example\n// this is a comment\nvar alalla = zzzz;\n',
-          description: '',
           language: '',
-          code: '\n// this is a comment\nvar alalla = zzzz;\n'
+          description: '',
+          raw: '@example\n// this is a comment\nvar alalla = zzzz;\n',
+          val: '\n// this is a comment\nvar alalla = zzzz;\n'
         }
       ],
       tags: [
@@ -100,10 +90,10 @@ describe('examples', function() {
       footer: 'This is arbitrary text.\n\n  * This is arbitrary text.\n  * This is arbitrary text.\n  * This is arbitrary text.\n\n**Example**\n\n{%= docs("example-parser.md") %}\n\nThis is a another description after the example.',
       examples: [{
         type: 'gfm',
-        val: '```js\n// foo.parser(name, replacements)\nfoo.parser("foo", function (a, b, c) {\n    // body...\n})\n```',
-        description: '',
         language: 'js',
-        code: '\n// foo.parser(name, replacements)\nfoo.parser("foo", function (a, b, c) {\n    // body...\n})\n'
+        description: '',
+        raw: '```js\n// foo.parser(name, replacements)\nfoo.parser("foo", function (a, b, c) {\n    // body...\n})\n```',
+        val: '\n// foo.parser(name, replacements)\nfoo.parser("foo", function (a, b, c) {\n    // body...\n})\n'
       }],
       tags: [{
         type: 'tag',

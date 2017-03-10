@@ -77,7 +77,7 @@ describe('tags', function() {
         type: 'tag',
         raw: '@param {*} obj true if `obj` is an array or array-like object (NodeList, Arguments,',
         key: 'param',
-        val: '{*} obj true if `obj` is an array or array-like object (NodeList, Arguments,\n                   String ...)'
+        val: '{*} obj true if `obj` is an array or array-like object (NodeList, Arguments,\n               String ...)'
       }, {
         type: 'tag',
         raw: '@return {boolean}',
@@ -110,7 +110,7 @@ describe('tags', function() {
           type: 'tag',
           raw: '@return {boolean} Returns true if `obj` is an array or array-like object (NodeList, Arguments,',
           key: 'return',
-          val: '{boolean} Returns true if `obj` is an array or array-like object (NodeList, Arguments,\n                   String ...)'
+          val: '{boolean} Returns true if `obj` is an array or array-like object (NodeList, Arguments,\n               String ...)'
         }
       ]
     });
