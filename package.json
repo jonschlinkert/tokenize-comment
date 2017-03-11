@@ -54,9 +54,9 @@
     ],
     "related": {
       "list": [
+        "parse-comments",
         "snapdragon",
-        "strip-comments",
-        "parse-comments"
+        "strip-comments"
       ]
     },
     "lint": {
