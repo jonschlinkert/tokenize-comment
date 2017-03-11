@@ -158,7 +158,7 @@ Results in:
 
 It will also recognize a mixture of formats (javadoc-style examples must always be last):
 
-<code>
+````js
 /**
  * This is a comment with
  * several lines of text.
@@ -204,7 +204,7 @@ It will also recognize a mixture of formats (javadoc-style examples must always 
  * @returns {Object} Instance of Foo
  * @api public
  */
-</code>
+````
 
 Results in:
 
