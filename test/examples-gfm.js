@@ -8,6 +8,38 @@ var tokenize = require('..');
 var fixtures = support.files(__dirname, 'fixtures');
 
 describe('gfm', function() {
+  it('should throw an error when a fence is missing', function() {
+    assert.throws(function() {
+      tokenize([
+        '/**',
+        ' * foo bar baz',
+        ' * ',
+        ' * ```js',
+        ' * var foo = "bar";',
+        ' *',
+        ' *',
+        ' * @param {string} something',
+        ' * @param {string} else',
+        ' */',
+      ].join('\n'));
+    });
+
+    assert.throws(function() {
+      tokenize([
+        '/**',
+        ' * foo bar baz',
+        ' * ',
+        ' * ````js',
+        ' * var foo = "bar";',
+        ' *',
+        ' *',
+        ' * @param {string} something',
+        ' * @param {string} else',
+        ' */',
+      ].join('\n'));
+    });
+  });
+
   it('should tokenize gfm code examples', function() {
     var tok = tokenize([
       '/**',
@@ -31,6 +63,49 @@ describe('gfm', function() {
           language: 'js',
           description: '',
           raw: '```js\nvar foo = "bar";\n```',
+          val: '\nvar foo = "bar";\n'
+        }
+      ],
+      tags: [
+        {
+          type: 'tag',
+          raw: '@param {string} something',
+          key: 'param',
+          val: '{string} something'
+        },
+        {
+          type: 'tag',
+          raw: '@param {string} else',
+          key: 'param',
+          val: '{string} else'
+        }
+      ]
+    });
+  });
+
+  it('should tokenize gfm code examples with four backticks', function() {
+    var tok = tokenize([
+      '/**',
+      ' * foo bar baz',
+      ' * ',
+      ' * ````js',
+      ' * var foo = "bar";',
+      ' * ````',
+      ' *',
+      ' * @param {string} something',
+      ' * @param {string} else',
+      ' */',
+    ].join('\n'));
+
+    assert.deepEqual(tok, {
+      description: 'foo bar baz',
+      footer: '',
+      examples: [
+        {
+          type: 'gfm',
+          language: 'js',
+          description: '',
+          raw: '````js\nvar foo = "bar";\n````',
           val: '\nvar foo = "bar";\n'
         }
       ],
