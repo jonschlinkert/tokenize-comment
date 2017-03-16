@@ -61,6 +61,15 @@
     },
     "lint": {
       "reflinks": true
-    }
+    },
+    "reflinks": [
+      "catharsis",
+      "doctrine",
+      "dox",
+      "js-comments",
+      "jsdoc",
+      "parse-comments",
+      "verb"
+    ]
   }
 }

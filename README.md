@@ -10,6 +10,98 @@ Install with [npm](https://www.npmjs.com/):
 $ npm install --save tokenize-comment
 ```
 
+<details>
+<summary><strong>What does this do?</strong></summary>
+
+This is a node.js library for tokenizing a single JavaScript block comment into an object with the following properties:
+
+* `description`
+* `examples`
+* `tags`
+* `footer`
+
+</details>
+
+<details>
+<summary><strong>Why is this necessary?</strong></summary>
+
+After working with a number of different comment parsers and documentation systems, including [dox](https://github.com/tj/dox), [doctrine](https://github.com/eslint/doctrine), [jsdoc](https://github.com/jsdoc3/jsdoc), [catharsis](https://github.com/hegemonic/catharsis), [closure-compiler](https://github.com/google/closure-compiler), [verb](https://github.com/verbose/verb), [js-comments](https://github.com/jonschlinkert/js-comments), [parse-comments](https://github.com/jonschlinkert/parse-comments), among others, a few things became clear:
+
+* There are certain features that are common to all of them, but they are implemented in totally different ways, and they all return completely different objects
+* None of them follow the same conventions
+* None of them have solid support for markdown formatting or examples in code comments (some have basic support, but weird conventions that need to be followed)
+
+doctrine is a good example the disparity. It's a great parser that produces reliable results. But if you review the doctrine issues you'll see mention of the need to adhere to "jsdoc specifications" quite often. Unfortunately:
+
+* jsdoc is not a specification and does not have anything close to a spec to follow. Only docs.
+* Even if jsdoc did have a real spec, it's an attempt at implementing a Javadoc parser in JavaScript, which itself does not have a specification. Similarly, Oracle has some documentation for Javadoc, but no specification (at least, I could not find a spec and was informed there wasn't one when I contacted support)
+* where jsdoc falls short, doctrine augments the "spec" with closure compiler conventions (which also is not a real specification)
+* doctrine throws errors on a great variety of nuances and edge cases that jsdoc itself has no problem with and will normalize out for you
+
+To be clear, I'm not picking on doctrine, it's one of the better parsers (and I'm using it to parse the tags returned by `tokenize-comment`).
+
+**The solution**
+
+By tokenizing the comment first, we achieve the following:
+
+* it's fast, since we're only interested in sifting out descriptions from examples and tags
+* we get better support for different flavors of code examples (we can write indented or gfm code examples, or use the javadoc `@example` tag if we want)
+* we use doctrine, catharsis, or any other comment parser to do further processing on any of the values.
+
+As a result, you can write code examples the way you want, and still follow jsdoc conventions for every other feature.
+
+**Example**
+
+Given the following comment:
+
+```js
+/**
+ * foo bar baz
+ * 
+ * ```js
+ * var foo = "bar";
+ * ``` 
+ * @param {string} something
+ * @param {string} else
+ */
+```
+
+`tokenize-comment` would return something like this:
+
+```js
+{
+  description: 'foo bar baz',
+  footer: '',
+  examples: [
+    {
+      type: 'gfm',
+      val: '```js\nvar foo = "bar";\n```',
+      description: '',
+      language: 'js',
+      code: '\nvar foo = "bar";\n'
+    }
+  ],
+  tags: [
+    {
+      type: 'tag',
+      raw: '@param {string} something',
+      key: 'param',
+      val: '{string} something'
+    }, 
+    {
+      type: 'tag',
+      raw: '@param {string} else',
+      key: 'param',
+      val: '{string} else'
+    }
+  ]
+}
+```
+
+We can now pass each tag to `doctrine.parseTag()` or `catharsis.parse()`, and format the resulting comment object to follow whatever convention we want. You can do something similar with the other properties as well.
+
+</details>
+
 ## Usage
 
 The main export is a function that takes a string with a single javascript comment only, _no code_.
