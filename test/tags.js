@@ -75,7 +75,7 @@ describe('tags', function() {
         val: '{*} obj'
       }, {
         type: 'tag',
-        raw: '@param {*} obj true if `obj` is an array or array-like object (NodeList, Arguments,',
+        raw: '@param {*} obj true if `obj` is an array or array-like object (NodeList, Arguments,\n               String ...)',
         key: 'param',
         val: '{*} obj true if `obj` is an array or array-like object (NodeList, Arguments,\n               String ...)'
       }, {
@@ -108,7 +108,7 @@ describe('tags', function() {
         },
         {
           type: 'tag',
-          raw: '@return {boolean} Returns true if `obj` is an array or array-like object (NodeList, Arguments,',
+          raw: '@return {boolean} Returns true if `obj` is an array or array-like object (NodeList, Arguments,\n               String ...)',
           key: 'return',
           val: '{boolean} Returns true if `obj` is an array or array-like object (NodeList, Arguments,\n               String ...)'
         }
@@ -124,6 +124,30 @@ describe('tags', function() {
       footer: '',
       examples: [],
       tags: []
+    });
+  });
+
+  it('should tokenize multi-line tags', function() {
+    var tok = tokenize([
+      '/**',
+      ' * @param {string|',
+      ' *     number} userName',
+      ' * }}',
+      ' */'
+    ].join('\n'));
+
+    assert.deepEqual(tok, {
+      description: '',
+      footer: '',
+      examples: [],
+      tags: [
+        {
+          key: 'param',
+          raw: '@param {string|\n number} userName\n }}',
+          type: 'tag',
+          val: '{string|\n number} userName\n }}'
+        }
+      ]
     });
   });
 
@@ -143,7 +167,7 @@ describe('tags', function() {
         },
         {
           type: 'tag',
-          raw: '@param {function} ErrorConstructor Custom error constructor to be instantiated when returning',
+          raw: '@param {function} ErrorConstructor Custom error constructor to be instantiated when returning\n   error from returned function, for cases when a particular type of error is useful.',
           key: 'param',
           val: '{function} ErrorConstructor Custom error constructor to be instantiated when returning\n   error from returned function, for cases when a particular type of error is useful.'
         },
