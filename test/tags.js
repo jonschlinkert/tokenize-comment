@@ -56,7 +56,7 @@ describe('tags', function() {
     });
   });
 
-  it('should work with malformed tags', function () {
+  it('should work with malformed tags', function() {
     var tok = tokenize(fixtures['tags-malformed-middle']);
 
     assert.deepEqual(tok, {

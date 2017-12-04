@@ -26,7 +26,7 @@ describe('tokenize', function() {
       ' *      ',
       ' *      @param {string} something',
       ' *      @param {string} else',
-      ' */',
+      ' */'
     ].join('\n'));
 
     assert.deepEqual(tok, {
@@ -58,7 +58,7 @@ describe('tokenize', function() {
       ' ',
       ' @param {string} something',
       ' @param {string} else',
-      '',
+      ''
     ].join('\n'));
 
     assert.deepEqual(tok1, {
@@ -86,7 +86,7 @@ describe('tokenize', function() {
       '',
       '',
       '@param {string} something',
-      '@param {string} else',
+      '@param {string} else'
     ].join('\n'));
 
     assert.deepEqual(tok2, {
@@ -110,7 +110,7 @@ describe('tokenize', function() {
     });
   });
 
-  it('should tokenize complicated comments', function () {
+  it('should tokenize complicated comments', function() {
     var tok1 = tokenize(fixtures['example-large']);
     assert.deepEqual(tok1, {
       description: '',

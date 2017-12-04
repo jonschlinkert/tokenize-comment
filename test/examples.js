@@ -2,14 +2,13 @@
 
 require('mocha');
 var assert = require('assert');
-var extract = require('extract-comments');
 var support = require('./support');
 var tokenize = require('..');
 
 var fixtures = support.files(__dirname, 'fixtures');
 
 describe('examples', function() {
-  it('should tokenize gfm, indented or javadoc examples', function () {
+  it('should tokenize gfm, indented or javadoc examples', function() {
     var tok = tokenize(fixtures['examples-multiple']);
 
     assert.deepEqual(tok, {
@@ -82,7 +81,7 @@ describe('examples', function() {
     });
   });
 
-  it('should work with arbitrary markdown', function () {
+  it('should work with arbitrary markdown', function() {
     var tok = tokenize(fixtures.markdown);
 
     assert.deepEqual(tok, {

@@ -12,7 +12,7 @@ describe('indented', function() {
       ' *     @foo',
       ' *     @bar',
       ' *     @baz',
-      ' */',
+      ' */'
     ].join('\n'));
 
     assert.deepEqual(tok, {
@@ -36,7 +36,7 @@ describe('indented', function() {
       ' *       @foo',
       ' *       @bar',
       ' *       @baz',
-      ' */',
+      ' */'
     ].join('\n'));
 
     assert.deepEqual(tok, {
@@ -60,7 +60,7 @@ describe('indented', function() {
       '     @foo',
       '     @bar',
       '     @baz',
-      '',
+      ''
     ].join('\n'));
 
     assert.deepEqual(tok, {
@@ -86,7 +86,7 @@ describe('indented', function() {
       ' *',
       ' * @param {string} something',
       ' * @param {string} else',
-      ' */',
+      ' */'
     ].join('\n'));
 
     assert.deepEqual(tok, {
@@ -123,7 +123,7 @@ describe('indented', function() {
       ' *',
       ' * @param {string} something',
       ' * @param {string} else',
-      ' */',
+      ' */'
     ].join('\n'));
 
     assert.deepEqual(tok, {
@@ -163,7 +163,7 @@ describe('indented', function() {
       ' *',
       ' * @param {string} something',
       ' * @param {string} else',
-      ' */',
+      ' */'
     ].join('\n'));
 
     assert.deepEqual(tok, {
@@ -200,7 +200,7 @@ describe('indented', function() {
       ' *',
       ' * @param {string} something',
       ' * @param {string} else',
-      ' */',
+      ' */'
     ].join('\n'));
 
     assert.deepEqual(tok, {
@@ -214,17 +214,17 @@ describe('indented', function() {
         val: '   var foo = "bar";\n   var baz = "qux";\n'
       }],
       tags: [{
-          type: 'tag',
-          raw: '@param {string} something',
-          key: 'param',
-          val: '{string} something'
-        },
-        {
-          type: 'tag',
-          raw: '@param {string} else',
-          key: 'param',
-          val: '{string} else'
-        }
+        type: 'tag',
+        raw: '@param {string} something',
+        key: 'param',
+        val: '{string} something'
+      },
+      {
+        type: 'tag',
+        raw: '@param {string} else',
+        key: 'param',
+        val: '{string} else'
+      }
       ]
     });
   });
@@ -240,7 +240,7 @@ describe('indented', function() {
       ' *',
       ' * @param {string} something',
       ' * @param {string} else',
-      ' */',
+      ' */'
     ].join('\n'));
 
     assert.deepEqual(tok, {
@@ -279,20 +279,20 @@ describe('indented', function() {
       ' *',
       ' * @param {string} something',
       ' * @param {string} else',
-      ' */',
+      ' */'
     ].join('\n'));
 
     assert.deepEqual(tok, {
       description: 'foo bar baz',
       footer: '',
       examples: [
-         {
-           type: 'indented',
-           language: '',
-           description: 'This is a description for an example.',
-           raw: '    var foo = \"bar\";\n    var baz = \"qux\";\n',
-           val: 'var foo = "bar";\nvar baz = "qux";\n'
-         }
+        {
+          type: 'indented',
+          language: '',
+          description: 'This is a description for an example.',
+          raw: '    var foo = \"bar\";\n    var baz = \"qux\";\n',
+          val: 'var foo = "bar";\nvar baz = "qux";\n'
+        }
       ],
       tags: [{
         type: 'tag',

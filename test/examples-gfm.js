@@ -20,7 +20,7 @@ describe('gfm', function() {
         ' *',
         ' * @param {string} something',
         ' * @param {string} else',
-        ' */',
+        ' */'
       ].join('\n'));
     });
 
@@ -35,7 +35,7 @@ describe('gfm', function() {
         ' *',
         ' * @param {string} something',
         ' * @param {string} else',
-        ' */',
+        ' */'
       ].join('\n'));
     });
   });
@@ -51,7 +51,7 @@ describe('gfm', function() {
       ' *',
       ' * @param {string} something',
       ' * @param {string} else',
-      ' */',
+      ' */'
     ].join('\n'));
 
     assert.deepEqual(tok, {
@@ -94,7 +94,7 @@ describe('gfm', function() {
       ' *',
       ' * @param {string} something',
       ' * @param {string} else',
-      ' */',
+      ' */'
     ].join('\n'));
 
     assert.deepEqual(tok, {
@@ -138,7 +138,7 @@ describe('gfm', function() {
       ' *',
       ' * @param {string} something',
       ' * @param {string} else',
-      ' */',
+      ' */'
     ].join('\n'));
 
     assert.deepEqual(tok, {
@@ -183,7 +183,7 @@ describe('gfm', function() {
       ' *',
       ' * @param {string} something',
       ' * @param {string} else',
-      ' */',
+      ' */'
     ].join('\n'));
 
     assert.deepEqual(tok, {
@@ -229,20 +229,20 @@ describe('gfm', function() {
       ' *',
       ' * @param {string} something',
       ' * @param {string} else',
-      ' */',
+      ' */'
     ].join('\n'));
 
     assert.deepEqual(tok, {
       description: 'foo bar baz',
       footer: '',
       examples: [
-         {
-           type: 'gfm',
-           language: 'js',
-           description: 'This is a description for an example.',
-           raw: '```js\nvar foo = "bar";\nvar baz = "qux";\n```',
-           val: '\nvar foo = "bar";\nvar baz = "qux";\n'
-         }
+        {
+          type: 'gfm',
+          language: 'js',
+          description: 'This is a description for an example.',
+          raw: '```js\nvar foo = "bar";\nvar baz = "qux";\n```',
+          val: '\nvar foo = "bar";\nvar baz = "qux";\n'
+        }
       ],
       tags: [
         {
@@ -273,20 +273,20 @@ describe('gfm', function() {
       ' * ```',
       ' * @param {string} something',
       ' * @param {string} else',
-      ' */',
+      ' */'
     ].join('\n'));
 
     assert.deepEqual(tok, {
       description: 'foo bar baz',
       footer: '',
       examples: [
-         {
-           type: 'gfm',
-           language: 'js',
-           description: 'This is a description for an example.',
-           raw: '```js\nvar foo = "bar";\nvar baz = "qux";\n```',
-           val: '\nvar foo = "bar";\nvar baz = "qux";\n'
-         }
+        {
+          type: 'gfm',
+          language: 'js',
+          description: 'This is a description for an example.',
+          raw: '```js\nvar foo = "bar";\nvar baz = "qux";\n```',
+          val: '\nvar foo = "bar";\nvar baz = "qux";\n'
+        }
       ],
       tags: [
         {
@@ -305,7 +305,7 @@ describe('gfm', function() {
     });
   });
 
-  it('should work when no stars prefix the gfm example', function () {
+  it('should work when no stars prefix the gfm example', function() {
     var tok = tokenize(fixtures['examples-gfm-no-stars']);
 
     assert.deepEqual(tok, {
