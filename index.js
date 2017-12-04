@@ -1,29 +1,29 @@
 'use strict';
 
+var typeOf = require('kind-of');
 var Snapdragon = require('snapdragon');
-var extend = require('extend-shallow');
 var define = require('define-property');
-var middleware = require('./lib/middleware');
+var handlers = require('./lib/handlers');
 var utils = require('./lib/utils');
 
 module.exports = function(comment, options) {
+  var res = {description: '', footer: '', examples: [], tags: []};
+
+  if (typeOf(comment) === 'object' && comment.raw) {
+    res = Object.assign({}, comment, res);
+    comment = comment.raw;
+  }
+
   if (typeof comment !== 'string') {
     throw new TypeError('expected comment to be a string');
   }
 
-  var opts = extend({}, options);
+  var opts = Object.assign({}, options);
   var snapdragon = new Snapdragon(opts);
-  var token = {
-    description: '',
-    footer: '',
-    examples: [],
-    tags: []
-  };
+  snapdragon.parser.use(handlers(opts, res));
 
-  snapdragon.parser.use(middleware(opts, token));
   var str = utils.stripStars(comment);
   var ast = snapdragon.parse(str);
-  define(token, 'ast', ast);
-  return token;
+  define(res, 'ast', ast);
+  return res;
 };
-
