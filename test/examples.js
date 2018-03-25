@@ -1,15 +1,14 @@
 'use strict';
 
 require('mocha');
-var assert = require('assert');
-var support = require('./support');
-var tokenize = require('..');
-
-var fixtures = support.files(__dirname, 'fixtures');
+const assert = require('assert');
+const support = require('./support');
+const tokenize = require('..');
+const fixtures = support.files(__dirname, 'fixtures');
 
 describe('examples', function() {
   it('should tokenize gfm, indented or javadoc examples', function() {
-    var tok = tokenize(fixtures['examples-multiple']);
+    const tok = tokenize(fixtures['examples-multiple']);
 
     assert.deepEqual(tok, {
       description: 'This is a comment with\nseveral lines of text.',
@@ -82,7 +81,7 @@ describe('examples', function() {
   });
 
   it('should work with arbitrary markdown', function() {
-    var tok = tokenize(fixtures.markdown);
+    const tok = tokenize(fixtures.markdown);
 
     assert.deepEqual(tok, {
       description: 'Set a parser that can later be used to parse any given string.',
@@ -91,8 +90,8 @@ describe('examples', function() {
         type: 'gfm',
         language: 'js',
         description: '',
-        raw: '```js\n// foo.parser(name, replacements)\nfoo.parser("foo", function (a, b, c) {\n    // body...\n})\n```',
-        val: '\n// foo.parser(name, replacements)\nfoo.parser("foo", function (a, b, c) {\n    // body...\n})\n'
+        raw: '```js\n// foo.parser(name, replacements)\nfoo.parser("foo", function(a, b, c) {\n    // body...\n})\n```',
+        val: '\n// foo.parser(name, replacements)\nfoo.parser("foo", function(a, b, c) {\n    // body...\n})\n'
       }],
       tags: [{
         type: 'tag',

@@ -23,7 +23,7 @@ exports.files = function() {
 exports.generate = function(name, dest) {
   var fixtures = exports.files(__dirname, '../fixtures');
   var comments = extract(fixtures[name]).filter(function(comment) {
-    return comment.type === 'block';
+    return comment.type === 'BlockComment';
   });
 
   var res = '';

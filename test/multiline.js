@@ -1,19 +1,18 @@
 'use strict';
 
 require('mocha');
-var path = require('path');
-var assert = require('assert');
-var extract = require('extract-comments');
-var support = require('./support');
-var tokenize = require('..');
-
-var fixtures = support.files(__dirname, 'fixtures');
+const assert = require('assert');
+const extract = require('extract-comments');
+const support = require('./support');
+const tokenize = require('..');
+const fixtures = support.files(__dirname, 'fixtures');
 
 describe('multi-line tags', function() {
   it('should tokenize multi-line tags', function() {
-    var comments = extract(fixtures['multiline']).filter(function(comment) {
-      return comment.type === 'block';
-    });
+    const comments = extract(fixtures['multiline'])
+      .filter(function(comment) {
+        return comment.type === 'BlockComment';
+      });
 
     // support.generate('multiline', 'multiline-units.js');
 

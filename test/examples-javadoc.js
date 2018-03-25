@@ -1,12 +1,12 @@
 'use strict';
 
 require('mocha');
-var assert = require('assert');
-var tokenize = require('..');
+const assert = require('assert');
+const tokenize = require('..');
 
 describe('javadoc', function() {
   it('should tokenize javadoc code examples', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '/**',
       ' * foo bar baz',
       ' * ',
@@ -43,7 +43,7 @@ describe('javadoc', function() {
   });
 
   it('should preserve indentation in javadoc code examples', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '/**',
       ' * foo bar baz',
       ' * ',
@@ -81,7 +81,7 @@ describe('javadoc', function() {
   });
 
   it('should detect a description for a javadoc code example', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '/**',
       ' * foo bar baz',
       ' * ',
@@ -120,7 +120,7 @@ describe('javadoc', function() {
   });
 
   it('should detect a description & leading newline for a javadoc example', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '/**',
       ' * foo bar baz',
       ' * ',

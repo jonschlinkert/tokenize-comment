@@ -1,12 +1,12 @@
 'use strict';
 
 require('mocha');
-var assert = require('assert');
-var tokenize = require('..');
+const assert = require('assert');
+const tokenize = require('..');
 
 describe('indented', function() {
   it('should tokenize indented code examples', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '/**',
       ' * Code:',
       ' *     @foo',
@@ -30,7 +30,7 @@ describe('indented', function() {
   });
 
   it('should work with extra indentation', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '/**',
       ' *   Code:',
       ' *       @foo',
@@ -54,7 +54,7 @@ describe('indented', function() {
   });
 
   it('should work with comments not prefixed by stars', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '',
       ' Code:',
       '     @foo',
@@ -78,7 +78,7 @@ describe('indented', function() {
   });
 
   it('should tokenize single-line indented code examples', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '/**',
       ' * foo bar baz',
       ' * ',
@@ -114,7 +114,7 @@ describe('indented', function() {
   });
 
   it('should tokenize multi-line indented code examples', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '/**',
       ' * foo bar baz',
       ' * ',
@@ -151,7 +151,7 @@ describe('indented', function() {
   });
 
   it('should work with multiple newlines', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '/**',
       ' * foo bar baz',
       ' * ',
@@ -191,7 +191,7 @@ describe('indented', function() {
   });
 
   it('should preserve indentation in indented code examples', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '/**',
       ' * foo bar baz',
       ' * ',
@@ -230,7 +230,7 @@ describe('indented', function() {
   });
 
   it('should detect a description for a indented code example', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '/**',
       ' * foo bar baz',
       ' * ',
@@ -268,7 +268,7 @@ describe('indented', function() {
   });
 
   it('should detect a description & leading newline for a indented example', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '/**',
       ' * foo bar baz',
       ' * ',

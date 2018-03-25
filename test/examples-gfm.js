@@ -1,11 +1,10 @@
 'use strict';
 
 require('mocha');
-var assert = require('assert');
-var support = require('./support');
-var tokenize = require('..');
-
-var fixtures = support.files(__dirname, 'fixtures');
+const assert = require('assert');
+const support = require('./support');
+const tokenize = require('..');
+const fixtures = support.files(__dirname, 'fixtures');
 
 describe('gfm', function() {
   it('should throw an error when a fence is missing', function() {
@@ -41,7 +40,7 @@ describe('gfm', function() {
   });
 
   it('should tokenize gfm code examples', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '/**',
       ' * foo bar baz',
       ' * ',
@@ -84,7 +83,7 @@ describe('gfm', function() {
   });
 
   it('should tokenize gfm code examples with four backticks', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '/**',
       ' * foo bar baz',
       ' * ',
@@ -127,7 +126,7 @@ describe('gfm', function() {
   });
 
   it('should preserve indentation in gfm code examples', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '/**',
       ' * foo bar baz',
       ' * ',
@@ -171,7 +170,7 @@ describe('gfm', function() {
   });
 
   it('should detect a description for a gfm code example', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '/**',
       ' * foo bar baz',
       ' * ',
@@ -216,7 +215,7 @@ describe('gfm', function() {
   });
 
   it('should detect a description & leading newline for a gfm example', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '/**',
       ' * foo bar baz',
       ' * ',
@@ -262,7 +261,7 @@ describe('gfm', function() {
   });
 
   it('should support gfm examples without extra leading/trailing newlines', function() {
-    var tok = tokenize([
+    const tok = tokenize([
       '/**',
       ' * foo bar baz',
       ' * ',
@@ -306,7 +305,7 @@ describe('gfm', function() {
   });
 
   it('should work when no stars prefix the gfm example', function() {
-    var tok = tokenize(fixtures['examples-gfm-no-stars']);
+    const tok = tokenize(fixtures['examples-gfm-no-stars']);
 
     assert.deepEqual(tok, {
       description: 'Invokes the `iterator` function once for each item in `obj` collection, which can be either an\n object or an array. The `iterator` function is invoked with `iterator(value, key, obj)`, where `value`\n is the value of an object property or an array element, `key` is the object property key or\n array element index and obj is the `obj` itself. Specifying a `context` for the function is optional.\n\n It is worth noting that `.forEach` does not iterate over inherited properties because it filters\n using the `hasOwnProperty` method.',
