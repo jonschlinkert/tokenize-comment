@@ -26,18 +26,18 @@ describe('javadoc', function() {
         language: '',
         description: '',
         raw: '@example\nvar foo = "bar";\n',
-        val: '\nvar foo = "bar";\n'
+        value: '\nvar foo = "bar";\n'
       }],
       tags: [{
         type: 'tag',
         raw: '@param {string} something',
         key: 'param',
-        val: '{string} something'
+        value: '{string} something'
       }, {
         type: 'tag',
         raw: '@param {string} else',
         key: 'param',
-        val: '{string} else'
+        value: '{string} else'
       }]
     });
   });
@@ -64,18 +64,18 @@ describe('javadoc', function() {
         language: '',
         description: '',
         raw: '@example\n   var foo = "bar";\n   var baz = "qux";\n',
-        val: '\n   var foo = "bar";\n   var baz = "qux";\n'
+        value: '\n   var foo = "bar";\n   var baz = "qux";\n'
       }],
       tags: [{
         type: 'tag',
         raw: '@param {string} something',
         key: 'param',
-        val: '{string} something'
+        value: '{string} something'
       }, {
         type: 'tag',
         raw: '@param {string} else',
         key: 'param',
-        val: '{string} else'
+        value: '{string} else'
       }]
     });
   });
@@ -103,18 +103,18 @@ describe('javadoc', function() {
         language: '',
         description: 'This is a description for an example.',
         raw: '@example\nvar foo = "bar";\nvar baz = "qux";\n',
-        val: '\nvar foo = "bar";\nvar baz = "qux";\n'
+        value: '\nvar foo = "bar";\nvar baz = "qux";\n'
       }],
       tags: [{
         type: 'tag',
         raw: '@param {string} something',
         key: 'param',
-        val: '{string} something'
+        value: '{string} something'
       }, {
         type: 'tag',
         raw: '@param {string} else',
         key: 'param',
-        val: '{string} else'
+        value: '{string} else'
       }]
     });
   });
@@ -143,18 +143,18 @@ describe('javadoc', function() {
         language: '',
         description: 'This is a description for an example.',
         raw: '@example\nvar foo = "bar";\nvar baz = "qux";\n',
-        val: '\nvar foo = "bar";\nvar baz = "qux";\n'
+        value: '\nvar foo = "bar";\nvar baz = "qux";\n'
       }],
       tags: [{
         type: 'tag',
         raw: '@param {string} something',
         key: 'param',
-        val: '{string} something'
+        value: '{string} something'
       }, {
         type: 'tag',
         raw: '@param {string} else',
         key: 'param',
-        val: '{string} else'
+        value: '{string} else'
       }]
     });
   });

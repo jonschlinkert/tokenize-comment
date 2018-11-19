@@ -23,7 +23,7 @@ describe('indented', function() {
         language: '',
         description: '',
         raw: '    @foo\n    @bar\n    @baz\n',
-        val: '@foo\n@bar\n@baz\n'
+        value: '@foo\n@bar\n@baz\n'
       }],
       tags: []
     });
@@ -47,7 +47,7 @@ describe('indented', function() {
         language: '',
         description: '',
         raw: '    @foo\n    @bar\n    @baz\n',
-        val: '@foo\n@bar\n@baz\n'
+        value: '@foo\n@bar\n@baz\n'
       }],
       tags: []
     });
@@ -71,7 +71,7 @@ describe('indented', function() {
         language: '',
         description: '',
         raw: '    @foo\n    @bar\n    @baz\n',
-        val: '@foo\n@bar\n@baz\n'
+        value: '@foo\n@bar\n@baz\n'
       }],
       tags: []
     });
@@ -97,18 +97,18 @@ describe('indented', function() {
         language: '',
         description: '',
         raw: '    var foo = "bar";\n',
-        val: 'var foo = "bar";\n'
+        value: 'var foo = "bar";\n'
       }],
       tags: [{
         type: 'tag',
         raw: '@param {string} something',
         key: 'param',
-        val: '{string} something'
+        value: '{string} something'
       }, {
         type: 'tag',
         raw: '@param {string} else',
         key: 'param',
-        val: '{string} else'
+        value: '{string} else'
       }]
     });
   });
@@ -134,18 +134,18 @@ describe('indented', function() {
         language: '',
         description: '',
         raw: '    var foo = "bar";\n    var baz = "qux";\n',
-        val: 'var foo = "bar";\nvar baz = "qux";\n'
+        value: 'var foo = "bar";\nvar baz = "qux";\n'
       }],
       tags: [{
         type: 'tag',
         raw: '@param {string} something',
         key: 'param',
-        val: '{string} something'
+        value: '{string} something'
       }, {
         type: 'tag',
         raw: '@param {string} else',
         key: 'param',
-        val: '{string} else'
+        value: '{string} else'
       }]
     });
   });
@@ -174,18 +174,18 @@ describe('indented', function() {
         language: '',
         description: '',
         raw: '    var foo = \"bar\";\n\n\n\n    var baz = \"qux\";\n',
-        val: 'var foo = \"bar\";\n\n\n\nvar baz = \"qux\";\n'
+        value: 'var foo = \"bar\";\n\n\n\nvar baz = \"qux\";\n'
       }],
       tags: [{
         type: 'tag',
         raw: '@param {string} something',
         key: 'param',
-        val: '{string} something'
+        value: '{string} something'
       }, {
         type: 'tag',
         raw: '@param {string} else',
         key: 'param',
-        val: '{string} else'
+        value: '{string} else'
       }]
     });
   });
@@ -211,19 +211,19 @@ describe('indented', function() {
         language: '',
         description: '',
         raw: '       var foo = "bar";\n       var baz = "qux";\n',
-        val: '   var foo = "bar";\n   var baz = "qux";\n'
+        value: '   var foo = "bar";\n   var baz = "qux";\n'
       }],
       tags: [{
         type: 'tag',
         raw: '@param {string} something',
         key: 'param',
-        val: '{string} something'
+        value: '{string} something'
       },
       {
         type: 'tag',
         raw: '@param {string} else',
         key: 'param',
-        val: '{string} else'
+        value: '{string} else'
       }
       ]
     });
@@ -251,18 +251,18 @@ describe('indented', function() {
         language: '',
         description: 'This is a description for an example.',
         raw: '    var foo = "bar";\n    var baz = "qux";\n',
-        val: 'var foo = "bar";\nvar baz = "qux";\n'
+        value: 'var foo = "bar";\nvar baz = "qux";\n'
       }],
       tags: [{
         type: 'tag',
         raw: '@param {string} something',
         key: 'param',
-        val: '{string} something'
+        value: '{string} something'
       }, {
         type: 'tag',
         raw: '@param {string} else',
         key: 'param',
-        val: '{string} else'
+        value: '{string} else'
       }]
     });
   });
@@ -291,19 +291,19 @@ describe('indented', function() {
           language: '',
           description: 'This is a description for an example.',
           raw: '    var foo = \"bar\";\n    var baz = \"qux\";\n',
-          val: 'var foo = "bar";\nvar baz = "qux";\n'
+          value: 'var foo = "bar";\nvar baz = "qux";\n'
         }
       ],
       tags: [{
         type: 'tag',
         raw: '@param {string} something',
         key: 'param',
-        val: '{string} something'
+        value: '{string} something'
       }, {
         type: 'tag',
         raw: '@param {string} else',
         key: 'param',
-        val: '{string} else'
+        value: '{string} else'
       }]
     });
   });

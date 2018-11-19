@@ -34,7 +34,7 @@ describe('multi-line tags', function() {
           type: 'tag',
           raw: '@sample\none\ntwo\nthree',
           key: 'sample',
-          val: 'one\ntwo\nthree'
+          value: 'one\ntwo\nthree'
         }
       ]
     });
@@ -58,13 +58,13 @@ describe('multi-line tags', function() {
           type: 'tag',
           raw: '@sample\none\ntwo\nthree',
           key: 'sample',
-          val: 'one\ntwo\nthree'
+          value: 'one\ntwo\nthree'
         },
         {
           type: 'tag',
           raw: '@bar last',
           key: 'bar',
-          val: 'last'
+          value: 'last'
         }
       ]
     });
@@ -88,13 +88,13 @@ describe('multi-line tags', function() {
           type: 'tag',
           raw: '@foo first',
           key: 'foo',
-          val: 'first'
+          value: 'first'
         },
         {
           type: 'tag',
           raw: '@sample\none\ntwo\nthree',
           key: 'sample',
-          val: 'one\ntwo\nthree'
+          value: 'one\ntwo\nthree'
         }
       ]
     });
@@ -119,19 +119,19 @@ describe('multi-line tags', function() {
           type: 'tag',
           raw: '@foo first',
           key: 'foo',
-          val: 'first'
+          value: 'first'
         },
         {
           type: 'tag',
           raw: '@sample\none\ntwo\nthree',
           key: 'sample',
-          val: 'one\ntwo\nthree'
+          value: 'one\ntwo\nthree'
         },
         {
           type: 'tag',
           raw: '@bar last',
           key: 'bar',
-          val: 'last'
+          value: 'last'
         }
       ]
     });
@@ -154,7 +154,7 @@ describe('multi-line tags', function() {
           type: 'tag',
           raw: '@param {String} foo\none\ntwo\nthree',
           key: 'param',
-          val: '{String} foo\none\ntwo\nthree'
+          value: '{String} foo\none\ntwo\nthree'
         }
       ]
     });
@@ -178,13 +178,13 @@ describe('multi-line tags', function() {
           type: 'tag',
           raw: '@param {String} foo\none\ntwo\nthree',
           key: 'param',
-          val: '{String} foo\none\ntwo\nthree'
+          value: '{String} foo\none\ntwo\nthree'
         },
         {
           type: 'tag',
           raw: '@bar last',
           key: 'bar',
-          val: 'last'
+          value: 'last'
         }
       ]
     });
@@ -208,13 +208,13 @@ describe('multi-line tags', function() {
           type: 'tag',
           raw: '@foo first',
           key: 'foo',
-          val: 'first'
+          value: 'first'
         },
         {
           type: 'tag',
           raw: '@param {String} foo\none\ntwo\nthree',
           key: 'param',
-          val: '{String} foo\none\ntwo\nthree'
+          value: '{String} foo\none\ntwo\nthree'
         }
       ]
     });
@@ -239,19 +239,19 @@ describe('multi-line tags', function() {
           type: 'tag',
           raw: '@foo first',
           key: 'foo',
-          val: 'first'
+          value: 'first'
         },
         {
           type: 'tag',
           raw: '@param {String} foo\none\ntwo\nthree',
           key: 'param',
-          val: '{String} foo\none\ntwo\nthree'
+          value: '{String} foo\none\ntwo\nthree'
         },
         {
           type: 'tag',
           raw: '@bar last',
           key: 'bar',
-          val: 'last'
+          value: 'last'
         }
       ]
     });
@@ -274,7 +274,7 @@ describe('multi-line tags', function() {
           type: 'tag',
           raw: '@return {String}\none\ntwo\nthree',
           key: 'return',
-          val: '{String}\none\ntwo\nthree'
+          value: '{String}\none\ntwo\nthree'
         }
       ]
     });
@@ -298,13 +298,13 @@ describe('multi-line tags', function() {
           type: 'tag',
           raw: '@return {String}\none\ntwo\nthree',
           key: 'return',
-          val: '{String}\none\ntwo\nthree'
+          value: '{String}\none\ntwo\nthree'
         },
         {
           type: 'tag',
           raw: '@bar last',
           key: 'bar',
-          val: 'last'
+          value: 'last'
         }
       ]
     });
@@ -328,13 +328,13 @@ describe('multi-line tags', function() {
           type: 'tag',
           raw: '@foo first',
           key: 'foo',
-          val: 'first'
+          value: 'first'
         },
         {
           type: 'tag',
           raw: '@return {String}\none\ntwo\nthree',
           key: 'return',
-          val: '{String}\none\ntwo\nthree'
+          value: '{String}\none\ntwo\nthree'
         }
       ]
     });
@@ -359,19 +359,19 @@ describe('multi-line tags', function() {
           type: 'tag',
           raw: '@foo first',
           key: 'foo',
-          val: 'first'
+          value: 'first'
         },
         {
           type: 'tag',
           raw: '@return {String}\none\ntwo\nthree',
           key: 'return',
-          val: '{String}\none\ntwo\nthree'
+          value: '{String}\none\ntwo\nthree'
         },
         {
           type: 'tag',
           raw: '@bar last',
           key: 'bar',
-          val: 'last'
+          value: 'last'
         }
       ]
     });
@@ -393,7 +393,7 @@ describe('multi-line tags', function() {
           language: '',
           description: '',
           raw: '@example\n    test(one);\n    test(two);\n',
-          val: '\n    test(one);\n    test(two);\n'
+          value: '\n    test(one);\n    test(two);\n'
         }
       ],
       tags: []
@@ -415,19 +415,19 @@ describe('multi-line tags', function() {
           type: 'tag',
           raw: '@tag-1 foo',
           key: 'tag-1',
-          val: 'foo'
+          value: 'foo'
         },
         {
           type: 'tag',
           raw: '@tag-2 bar',
           key: 'tag-2',
-          val: 'bar'
+          value: 'bar'
         },
         {
           type: 'tag',
           raw: '@tag-3 baz',
           key: 'tag-3',
-          val: 'baz'
+          value: 'baz'
         }
       ]
     });
@@ -451,19 +451,19 @@ describe('multi-line tags', function() {
           type: 'tag',
           raw: '@tag-1\n foo',
           key: 'tag-1',
-          val: 'foo'
+          value: 'foo'
         },
         {
           type: 'tag',
           raw: '@tag-2\n bar',
           key: 'tag-2',
-          val: 'bar'
+          value: 'bar'
         },
         {
           type: 'tag',
           raw: '@tag-3\n baz',
           key: 'tag-3',
-          val: 'baz'
+          value: 'baz'
         }
       ]
     });

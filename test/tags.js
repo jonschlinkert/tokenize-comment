@@ -18,7 +18,7 @@ describe('tags', function() {
           type: 'tag',
           raw: '@param {string} something',
           key: 'param',
-          val: '{string} something'
+          value: '{string} something'
         }
       ]
     });
@@ -43,13 +43,13 @@ describe('tags', function() {
           key: 'param',
           raw: '@param {string} something',
           type: 'tag',
-          val: '{string} something'
+          value: '{string} something'
         },
         {
           key: 'param',
           raw: '@param {string} else',
           type: 'tag',
-          val: '{string} else'
+          value: '{string} else'
         }
       ]
     });
@@ -66,22 +66,22 @@ describe('tags', function() {
         type: 'tag',
         raw: '@private',
         key: 'private',
-        val: ''
+        value: ''
       }, {
         type: 'tag',
         raw: '@param {*} obj',
         key: 'param',
-        val: '{*} obj'
+        value: '{*} obj'
       }, {
         type: 'tag',
         raw: '@param {*} obj true if `obj` is an array or array-like object (NodeList, Arguments,\n               String ...)',
         key: 'param',
-        val: '{*} obj true if `obj` is an array or array-like object (NodeList, Arguments,\n               String ...)'
+        value: '{*} obj true if `obj` is an array or array-like object (NodeList, Arguments,\n               String ...)'
       }, {
         type: 'tag',
         raw: '@return {boolean}',
         key: 'return',
-        val: '{boolean}'
+        value: '{boolean}'
       }]
     });
   });
@@ -97,19 +97,19 @@ describe('tags', function() {
           type: 'tag',
           raw: '@private',
           key: 'private',
-          val: ''
+          value: ''
         },
         {
           type: 'tag',
           raw: '@param {*} obj',
           key: 'param',
-          val: '{*} obj'
+          value: '{*} obj'
         },
         {
           type: 'tag',
           raw: '@return {boolean} Returns true if `obj` is an array or array-like object (NodeList, Arguments,\n               String ...)',
           key: 'return',
-          val: '{boolean} Returns true if `obj` is an array or array-like object (NodeList, Arguments,\n               String ...)'
+          value: '{boolean} Returns true if `obj` is an array or array-like object (NodeList, Arguments,\n               String ...)'
         }
       ]
     });
@@ -144,7 +144,7 @@ describe('tags', function() {
           key: 'param',
           raw: '@param {string|\n number} userName\n }}',
           type: 'tag',
-          val: '{string|\n number} userName\n }}'
+          value: '{string|\n number} userName\n }}'
         }
       ]
     });
@@ -162,19 +162,19 @@ describe('tags', function() {
           type: 'tag',
           raw: '@param {string} module The namespace to use for the new minErr instance.',
           key: 'param',
-          val: '{string} module The namespace to use for the new minErr instance.'
+          value: '{string} module The namespace to use for the new minErr instance.'
         },
         {
           type: 'tag',
           raw: '@param {function} ErrorConstructor Custom error constructor to be instantiated when returning\n   error from returned function, for cases when a particular type of error is useful.',
           key: 'param',
-          val: '{function} ErrorConstructor Custom error constructor to be instantiated when returning\n   error from returned function, for cases when a particular type of error is useful.'
+          value: '{function} ErrorConstructor Custom error constructor to be instantiated when returning\n   error from returned function, for cases when a particular type of error is useful.'
         },
         {
           type: 'tag',
           raw: '@returns {function(code:string, template:string, ...templateArgs): Error} minErr instance',
           key: 'returns',
-          val: '{function(code:string, template:string, ...templateArgs): Error} minErr instance'
+          value: '{function(code:string, template:string, ...templateArgs): Error} minErr instance'
         }
       ]
     });
@@ -192,19 +192,19 @@ describe('tags', function() {
           key: 'ngdoc',
           raw: '@ngdoc module',
           type: 'tag',
-          val: 'module'
+          value: 'module'
         },
         {
           key: 'name',
           raw: '@name ng',
           type: 'tag',
-          val: 'ng'
+          value: 'ng'
         },
         {
           key: 'module',
           raw: '@module ng',
           type: 'tag',
-          val: 'ng'
+          value: 'ng'
         }
       ]
     });
@@ -220,37 +220,37 @@ describe('tags', function() {
           key: 'ngdoc',
           raw: '@ngdoc function',
           type: 'tag',
-          val: 'function'
+          value: 'function'
         },
         {
           key: 'name',
           raw: '@name angular.lowercase',
           type: 'tag',
-          val: 'angular.lowercase'
+          value: 'angular.lowercase'
         },
         {
           key: 'module',
           raw: '@module ng',
           type: 'tag',
-          val: 'ng'
+          value: 'ng'
         },
         {
           key: 'kind',
           raw: '@kind function',
           type: 'tag',
-          val: 'function'
+          value: 'function'
         },
         {
           key: 'param',
           raw: '@param {string} string String to be converted to lowercase.',
           type: 'tag',
-          val: '{string} string String to be converted to lowercase.'
+          value: '{string} string String to be converted to lowercase.'
         },
         {
           key: 'returns',
           raw: '@returns {string} Lowercased string.',
           type: 'tag',
-          val: '{string} Lowercased string.'
+          value: '{string} Lowercased string.'
         }
       ]
     });

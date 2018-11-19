@@ -1,11 +1,11 @@
-var extract = require('extract-comments');
-var tokenize = require('./');
-var comments = extract([
+const extract = require('extract-comments');
+const tokenize = require('./');
+const comments = extract([
   '/**',
   ' * foo bar baz',
   ' * ',
   ' * ```js',
-  ' * var foo = "bar";',
+  ' * const foo = "bar";',
   ' * ```',
   ' *',
   ' * @param {string} something',
@@ -16,5 +16,5 @@ var comments = extract([
   '',
 ].join('\n'));
 
-var tok = tokenize(comments[0]);
+const tok = tokenize(comments[0]);
 console.log(tok)

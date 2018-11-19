@@ -1,29 +1,23 @@
 'use strict';
 
-const typeOf = require('kind-of');
-const define = require('define-property');
-const Snapdragon = require('snapdragon');
-const handlers = require('./lib/handlers');
+const tokenize = require('./lib/tokenize');
 const utils = require('./lib/utils');
+const { define, typeOf } = utils;
 
-module.exports = function(comment, options) {
-  let res = {description: '', footer: '', examples: [], tags: []};
+module.exports = function(input, options = {}) {
+  let state = { description: '', footer: '', examples: [], tags: [] };
 
-  if (typeOf(comment) === 'object' && comment.raw) {
-    res = Object.assign({}, comment, res);
-    comment = comment.raw;
+  if (typeOf(input) === 'object' && input.raw) {
+    state = { ...input, ...state };
+    input = input.raw;
   }
 
-  if (typeof comment !== 'string') {
-    throw new TypeError('expected comment to be a string');
+  if (typeof input !== 'string') {
+    throw new TypeError('expected input to be a string');
   }
 
-  const opts = Object.assign({}, options);
-  const snapdragon = new Snapdragon(opts);
-  snapdragon.parser.use(handlers(opts, res));
-
-  const str = utils.stripStars(comment);
-  const ast = snapdragon.parse(str);
-  define(res, 'ast', ast);
-  return res;
+  const str = options.stripStars !== false ? utils.stripStars(input) : input;
+  const ast = tokenize(str, options, state);
+  define(state, 'ast', ast);
+  return state;
 };

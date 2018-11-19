@@ -13,7 +13,7 @@ describe('tokenize-comment', function() {
 
   describe('error handling', function() {
     it('should throw an error when invalid args are passed', function() {
-      assert.throws(() => tokenize(), /expected comment to be a string/);
+      assert.throws(() => tokenize(), /expected input to be a string/);
     });
   });
 });

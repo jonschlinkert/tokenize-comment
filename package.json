@@ -21,17 +21,13 @@
     "test": "mocha"
   },
   "dependencies": {
-    "array-each": "^1.0.1",
-    "define-property": "^2.0.2",
-    "extend-shallow": "^3.0.2",
-    "isobject": "^3.0.1",
-    "snapdragon": "^0.11.3"
+    "snapdragon-lexer": "^4.0.0"
   },
   "devDependencies": {
     "extract-comments": "^1.0.0",
-    "gulp-format-md": "^1.0.0",
-    "mocha": "^3.5.3",
-    "stringify-object": "^3.2.2",
+    "gulp-format-md": "^2.0.0",
+    "mocha": "^5.2.0",
+    "stringify-object": "^3.3.0",
     "write": "^1.0.3"
   },
   "keywords": [
