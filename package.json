@@ -1,7 +1,7 @@
 {
   "name": "tokenize-comment",
   "description": "Uses snapdragon to tokenize a single JavaScript block comment into an object, with description, tags, and code example sections that can be passed to any other comment parsers for further parsing.",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "homepage": "https://github.com/jonschlinkert/tokenize-comment",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
   "repository": "jonschlinkert/tokenize-comment",
