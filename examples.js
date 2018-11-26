@@ -17,4 +17,4 @@ const comments = extract([
 ].join('\n'));
 
 const tok = tokenize(comments[0]);
-console.log(tok)
+console.log(tok);
