@@ -126,6 +126,17 @@ describe('tags', function() {
     });
   });
 
+  it('should tokenize a comment with no tags', function() {
+    const tok = tokenize(fixtures['description-no-tags2']);
+
+    assert.deepEqual(tok, {
+      description: 'delimiter definitions\n@ 2022.12.23\n/\n/* \n@\n/\nconst atdelimiter = 0x40;',
+      footer: '',
+      examples: [],
+      tags: []
+    });
+  });
+
   it('should tokenize multi-line tags', function() {
     const tok = tokenize([
       '/**',
