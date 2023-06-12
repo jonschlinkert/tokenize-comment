@@ -22,7 +22,7 @@ jobs:
 
     - name: Test
       run: |
-        npm ci
+        npm install
         npm run test
         
   publish-npm:
@@ -34,7 +34,7 @@ jobs:
         with:
           node-version: '14.x'
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
+      - run: npm install
       - run: npm run build
       - run: npm publish --access=public
         env:
